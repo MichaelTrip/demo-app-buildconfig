@@ -1,0 +1,19 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: demo-buildconfig
+spec:
+  source:
+    git:
+      uri: https://github.com/MichaelTrip/demo-app-nodejs.git
+  strategy:
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: node:16
+    type: Source
+  output:
+    to:
+      kind: ImageStreamTag
+      name: demo-app:latest
+
